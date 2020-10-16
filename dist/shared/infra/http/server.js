@@ -11,6 +11,7 @@ const upload_1 = __importDefault(require("@config/upload"));
 const AppError_1 = __importDefault(require("@shared/errors/AppError"));
 const routes_1 = __importDefault(require("@shared/infra/http/routes"));
 require("@shared/infra/typeorm");
+require("@shared/container");
 const app = express_1.default();
 app.use(cors_1.default());
 app.use(express_1.default.json());
