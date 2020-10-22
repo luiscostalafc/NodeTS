@@ -15,21 +15,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const bcryptjs_1 = require("bcryptjs");
 const jsonwebtoken_1 = require("jsonwebtoken");
 const auth_1 = __importDefault(require("@config/auth"));
 const tsyringe_1 = require("tsyringe");
 const AppError_1 = __importDefault(require("@shared/errors/AppError"));
 let AuthenticateUserService = class AuthenticateUserService {
-    constructor(usersRepository) {
+    constructor(usersRepository, hashProvider) {
         this.usersRepository = usersRepository;
+        this.hashProvider = hashProvider;
     }
     async execute({ email, password }) {
         const user = await this.usersRepository.findByEmail(email);
         if (!user) {
             throw new AppError_1.default('Incorrect email/password combination.', 401);
         }
-        const passwordMatched = await bcryptjs_1.compare(password, user.password);
+        const passwordMatched = await this.hashProvider.compareHash(password, user.password);
         if (!passwordMatched) {
             throw new AppError_1.default('Incorrect email/password combination.', 401);
         }
@@ -47,6 +47,7 @@ let AuthenticateUserService = class AuthenticateUserService {
 AuthenticateUserService = __decorate([
     tsyringe_1.injectable(),
     __param(0, tsyringe_1.inject('UsersRepository')),
-    __metadata("design:paramtypes", [Object])
+    __param(1, tsyringe_1.inject('HashProvider')),
+    __metadata("design:paramtypes", [Object, Object])
 ], AuthenticateUserService);
 exports.default = AuthenticateUserService;

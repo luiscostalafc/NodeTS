@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const uuidv4_1 = require("uuidv4");
 const User_1 = __importDefault(require("../../infra/typeorm/entities/User"));
-class UsersRepository {
+class FakeUsersRepository {
     constructor() {
         this.users = [];
     }
@@ -29,4 +29,4 @@ class UsersRepository {
         return user;
     }
 }
-exports.default = UsersRepository;
+exports.default = FakeUsersRepository;

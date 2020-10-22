@@ -4,40 +4,40 @@ const typeorm_1 = require("typeorm");
 class CreateAppointments1594167986698 {
     async up(queryRunner) {
         await queryRunner.createTable(new typeorm_1.Table({
-            name: "appointments",
+            name: 'appointments',
             columns: [
                 {
-                    name: "id",
-                    type: "uuid",
+                    name: 'id',
+                    type: 'uuid',
                     isPrimary: true,
-                    generationStrategy: "uuid",
-                    default: "uuid_generate_v4()",
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()',
                 },
                 {
-                    name: "provider",
-                    type: "varchar",
+                    name: 'provider',
+                    type: 'varchar',
                     isNullable: false,
                 },
                 {
-                    name: "date",
-                    type: "timestamp with time zone",
+                    name: 'date',
+                    type: 'timestamp with time zone',
                     isNullable: false,
                 },
                 {
-                    name: "created_at",
-                    type: "timestamp",
-                    default: "now()",
+                    name: 'created_at',
+                    type: 'timestamp',
+                    default: 'now()',
                 },
                 {
-                    name: "update_at",
-                    type: "timestamp",
-                    default: "now()",
+                    name: 'update_at',
+                    type: 'timestamp',
+                    default: 'now()',
                 },
             ],
         }));
     }
     async down(queryRunner) {
-        await queryRunner.dropTable("appointments");
+        await queryRunner.dropTable('appointments');
     }
 }
 exports.default = CreateAppointments1594167986698;

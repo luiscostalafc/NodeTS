@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-const AppointmentsRepository_1 = __importDefault(require("@modules/appointments/infra/typeorm/repositories/AppointmentsRepository"));
+const User_1 = __importDefault(require("@modules/users/infra/typeorm/entities/User"));
 let Appointment = class Appointment {
 };
 __decorate([
@@ -25,10 +25,19 @@ __decorate([
     __metadata("design:type", String)
 ], Appointment.prototype, "provider_id", void 0);
 __decorate([
-    typeorm_1.ManyToOne(() => AppointmentsRepository_1.default),
+    typeorm_1.ManyToOne(() => User_1.default),
     typeorm_1.JoinColumn({ name: 'provider_id' }),
-    __metadata("design:type", AppointmentsRepository_1.default)
+    __metadata("design:type", User_1.default)
 ], Appointment.prototype, "provider", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Appointment.prototype, "user_id", void 0);
+__decorate([
+    typeorm_1.ManyToOne(() => User_1.default),
+    typeorm_1.JoinColumn({ name: 'user_id' }),
+    __metadata("design:type", User_1.default)
+], Appointment.prototype, "user", void 0);
 __decorate([
     typeorm_1.Column('timestamp with time zone'),
     __metadata("design:type", Date)
@@ -40,7 +49,7 @@ __decorate([
 __decorate([
     typeorm_1.UpdateDateColumn(),
     __metadata("design:type", Date)
-], Appointment.prototype, "update_at", void 0);
+], Appointment.prototype, "updated_at", void 0);
 Appointment = __decorate([
     typeorm_1.Entity('appointments')
 ], Appointment);

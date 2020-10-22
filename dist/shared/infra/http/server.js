@@ -15,7 +15,7 @@ require("@shared/container");
 const app = express_1.default();
 app.use(cors_1.default());
 app.use(express_1.default.json());
-app.use('/files', express_1.default.static(upload_1.default.directory));
+app.use('/files', express_1.default.static(upload_1.default.uploadsFolder));
 app.use(routes_1.default);
 app.use((err, request, response, _) => {
     if (err instanceof AppError_1.default) {

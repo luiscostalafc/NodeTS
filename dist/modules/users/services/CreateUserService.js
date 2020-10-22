@@ -15,19 +15,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const bcryptjs_1 = require("bcryptjs");
 const tsyringe_1 = require("tsyringe");
 const AppError_1 = __importDefault(require("@shared/errors/AppError"));
 let CreateUserService = class CreateUserService {
-    constructor(usersRepository) {
+    constructor(usersRepository, hashProvider) {
         this.usersRepository = usersRepository;
+        this.hashProvider = hashProvider;
     }
     async execute({ name, email, password }) {
         const checkUserExists = await this.usersRepository.findByEmail(email);
         if (checkUserExists) {
             throw new AppError_1.default('Email address already used.');
         }
-        const hashedPassword = await bcryptjs_1.hash(password, 8);
+        const hashedPassword = await this.hashProvider.generateHash(password);
         const user = await this.usersRepository.create({
             name,
             email,
@@ -38,7 +38,8 @@ let CreateUserService = class CreateUserService {
 };
 CreateUserService = __decorate([
     tsyringe_1.injectable(),
-    __param(0, tsyringe_1.inject('UsersRespository')),
-    __metadata("design:paramtypes", [Object])
+    __param(0, tsyringe_1.inject('UsersRepository')),
+    __param(1, tsyringe_1.inject('HashProvider')),
+    __metadata("design:paramtypes", [Object, Object])
 ], CreateUserService);
 exports.default = CreateUserService;
