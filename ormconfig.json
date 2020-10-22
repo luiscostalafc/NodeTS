@@ -7,10 +7,10 @@
   "password": "docker",
   "database": "gostack_gobarber",
   "entities": [
-    "./src/modules/**/infra/typeorm/entities/*.ts"
+    "./src/modules/**/infra/typeorm/entities/.{ts,js}"
   ],
   "migrations": [
-    "./src/shared/infra/typeorm/migrations/*.ts"
+    "./src/shared/infra/typeorm/migrations/.{ts,js}"
   ],
    "cli": {
      "migrationsDir": "./src/shared/infra/typeorm/migrations"
