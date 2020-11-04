@@ -9,7 +9,6 @@ interface IRequest {
   provider_id: string;
   month: number;
   year: number;
-  day: number;
 }
 
 type IResponse = Array<{
@@ -24,13 +23,12 @@ class ListProviderMonthAvailabilityService {
     private appoitmentsRepository: IAppointmentsRepository,
   ) {}
 
-  public async execute({ provider_id, month, year, day }: IRequest): Promise<IResponse> {
+  public async execute({ provider_id, month, year }: IRequest): Promise<IResponse> {
     const appointments = await this.appoitmentsRepository.findAllInMonthFromProvider(
       {
         provider_id,
         year,
         month,
-        day,
       }
     );
 

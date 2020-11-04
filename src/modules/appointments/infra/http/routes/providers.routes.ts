@@ -2,11 +2,18 @@ import { Router } from 'express';
 
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import ProvidersController from '../controllers/ProvidersController';
+import ProviderMonthAvailabilityController from '../controllers/ProviderMonthAvailabilityController';
+import ProviderDayAvailabilityController from '../controllers/ProviderDayAvailabilityController';
 
 const providersRoter = Router();
-const appointmentsController = new ProvidersController();
+const providersController = new ProvidersController();
+const providerMonthAvailabilityController = new ProviderMonthAvailabilityController();
+const providerDayAvailabilityController = new ProviderDayAvailabilityController();
 
 providersRoter.use(ensureAuthenticated);
-providersRoter.get('/', appointmentsController.index);
+
+providersRoter.get('/', providersController.index);
+providersRoter.get('/:provider_id/month-availability', providerMonthAvailabilityController.index);
+providersRoter.get('/:provider_id/day-availability', providerDayAvailabilityController.index);
 
 export default providersRoter;
