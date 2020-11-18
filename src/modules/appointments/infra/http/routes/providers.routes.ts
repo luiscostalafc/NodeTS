@@ -13,7 +13,13 @@ const providerDayAvailabilityController = new ProviderDayAvailabilityController(
 providersRoter.use(ensureAuthenticated);
 
 providersRoter.get('/', providersController.index);
-providersRoter.get('/:provider_id/month-availability', providerMonthAvailabilityController.index);
-providersRoter.get('/:provider_id/day-availability', providerDayAvailabilityController.index);
+providersRoter.get(
+  '/:provider_id/month-availability',
+  providerMonthAvailabilityController.index,
+);
+providersRoter.get(
+  '/:provider_id/day-availability',
+  providerDayAvailabilityController.index,
+);
 
 export default providersRoter;
