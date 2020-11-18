@@ -1,5 +1,5 @@
 import { uuid } from 'uuidv4';
-import { isEqual, getMonth, getYear, getDate, getDay } from 'date-fns';
+import { isEqual, getMonth, getYear, getDate } from 'date-fns';
 
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointmentDTO';
@@ -29,10 +29,10 @@ class AppointmentsRepository implements IAppointmentsRepository {
         appointment.provider_id === provider_id &&
         getMonth(appointment.date) + 1 === month &&
         getYear(appointment.date) === year
-      )
-    })
+      );
+    });
 
-    return appointments
+    return appointments;
   }
 
   public async findAllInDayFromProvider({
@@ -44,13 +44,13 @@ class AppointmentsRepository implements IAppointmentsRepository {
     const appointments = this.appointments.filter(appointment => {
       return (
         appointment.provider_id === provider_id &&
-        getDay(appointment.date) === day &&
+        getDate(appointment.date) === day &&
         getMonth(appointment.date) + 1 === month &&
         getYear(appointment.date) === year
-      )
-    })
+      );
+    });
 
-    return appointments
+    return appointments;
   }
 
   public async create({

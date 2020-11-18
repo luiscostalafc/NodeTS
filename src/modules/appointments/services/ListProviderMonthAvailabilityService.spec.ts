@@ -1,6 +1,6 @@
-//import AppError from '@shared/errors/AppError';
+// import AppError from '@shared/errors/AppError';
 
-import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository'
+import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository';
 import ListProviderMonthAvailabilityService from './ListProviderMonthAvailabilityService';
 
 let fakeAppointmentsRepository: FakeAppointmentsRepository;
@@ -8,9 +8,9 @@ let listProviderMonthAvailability: ListProviderMonthAvailabilityService;
 
 describe('ListProviderMonthAvailability', () => {
   beforeEach(() => {
-    fakeAppointmentsRepository = new FakeAppointmentsRepository;
+    fakeAppointmentsRepository = new FakeAppointmentsRepository();
     listProviderMonthAvailability = new ListProviderMonthAvailabilityService(
-      fakeAppointmentsRepository
+      fakeAppointmentsRepository,
     );
   });
   it('should be able to list the month availability from provider', async () => {
@@ -73,20 +73,17 @@ describe('ListProviderMonthAvailability', () => {
 
     const availability = await listProviderMonthAvailability.execute({
       provider_id: 'provider',
-      day: 25,
       year: 2020,
       month: 5,
-    })
+    });
 
-    expect(availability).toEqual
-      (expect.arrayContaining([
+    expect(availability).toEqual(
+      expect.arrayContaining([
         { day: 19, available: true },
         { day: 20, available: false },
         { day: 21, available: true },
         { day: 22, available: true },
-      ])
-      )
-
+      ]),
+    );
   });
-
 });
