@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/luiscosta/.nvm/versions/node/v14.7.0/bin/node /Users/luiscosta/.yarn/bin/yarn.js add -D @types/hapy__joi
+  /Users/luiscosta/.nvm/versions/node/v14.7.0/bin/node /Users/luiscosta/.yarn/bin/yarn.js add class-transform
 
 PATH: 
   /Users/luiscosta/.nvm/versions/node/v14.7.0/bin:/Users/luiscosta/.yarn/bin:/Users/luiscosta/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/luiscosta/.nvm/versions/node/v14.7.0/bin:/Users/luiscosta/.yarn/bin:/Users/luiscosta/.config/yarn/global/node_modules/.bin:/Users/luiscosta/.zinit/polaris/sbin:/Users/luiscosta/.zinit/polaris/bin:/Users/luiscosta/.zinit/polaris/usr/sbin:/Users/luiscosta/.zinit/polaris/usr/bin:/opt/android_sdk/emulator:/opt/android_sdk/tools:/opt/android_sdk/tools/bin:/opt/android_sdk/platform-tools:/opt/android_sdk/emulator:/opt/android_sdk/tools:/opt/android_sdk/tools/bin:/opt/android_sdk/platform-tools
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fhapy__joi: Not found
+  Error: https://registry.yarnpkg.com/class-transform: Not found
       at Request.params.callback [as _callback] (/Users/luiscosta/.yarn/lib/cli.js:66987:18)
       at Request.self.callback (/Users/luiscosta/.yarn/lib/cli.js:140748:22)
       at Request.emit (events.js:314:20)
@@ -49,6 +49,7 @@ npm manifest:
       "@types/bcryptjs": "^2.4.2",
       "@types/cors": "^2.8.7",
       "@types/express": "^4.17.5",
+      "@types/hapi__joi": "^17.1.6",
       "@types/jest": "^25.2.3",
       "@types/jsonwebtoken": "^8.5.0",
       "@types/mongodb": "^3.5.34",
@@ -1376,6 +1377,11 @@ Lockfile:
     integrity sha512-mWA/4zFQhfvOA8zWkXobwJvBD7vzcxgrOQ0J5CH1votGqdq9m7+FwtGaqyCZqC3NyyBkc9z4m+iry4LlqcMWJg==
     dependencies:
       "@types/node" "*"
+  
+  "@types/hapi__joi@^17.1.6":
+    version "17.1.6"
+    resolved "https://registry.yarnpkg.com/@types/hapi__joi/-/hapi__joi-17.1.6.tgz#b84663676aa9753c17183718338dd40ddcbd3754"
+    integrity sha512-y3A1MzNC0FmzD5+ys59RziE1WqKrL13nxtJgrSzjoO7boue5B7zZD2nZLPwrSuUviFjpKFQtgHYSvhDGfIE4jA==
   
   "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
     version "2.0.3"
