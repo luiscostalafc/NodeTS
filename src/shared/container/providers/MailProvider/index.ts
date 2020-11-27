@@ -1,4 +1,4 @@
-import { SES } from 'aws-sdk';
+// import { SES } from 'aws-sdk';
 import { container } from 'tsyringe';
 import mailConfig from '@config/mail';
 
