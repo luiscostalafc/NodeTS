@@ -9,7 +9,6 @@ import {
 } from 'typeorm';
 
 import User from '@modules/users/infra/typeorm/entities/User';
-import CreateUsers1594167986699 from '@shared/infra/typeorm/migrations/1594342032364-CreateUsers';
 
 @Entity('appointments')
 class Appointment {
@@ -26,7 +25,7 @@ class Appointment {
   @Column()
   user_id: string;
 
-  @ManyToOne(() => CreateUsers1594167986699)
+  @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
 
