@@ -6,24 +6,15 @@ import ProvidersController from '../controllers/ProvidersController';
 import ProviderMonthAvailabilityController from '../controllers/ProviderMonthAvailabilityController';
 import ProviderDayAvailabilityController from '../controllers/ProviderDayAvailabilityController';
 
-const providersRoter = Router();
+const providersRouter = Router();
 const providersController = new ProvidersController();
 const providerMonthAvailabilityController = new ProviderMonthAvailabilityController();
 const providerDayAvailabilityController = new ProviderDayAvailabilityController();
 
-providersRoter.use(ensureAuthenticated);
+providersRouter.use(ensureAuthenticated);
 
-providersRoter.get('/', providersController.index);
-providersRoter.get(
-  '/:provider_id/month-availability',
-  celebrate({
-    [Segments.PARAMS]: {
-      provider_id: Joi.string().uuid().required(),
-    },
-  }),
-  providerMonthAvailabilityController.index,
-);
-providersRoter.get(
+providersRouter.get('/', providersController.index);
+providersRouter.get(
   '/:provider_id/day-availability',
   celebrate({
     [Segments.PARAMS]: {
@@ -32,5 +23,14 @@ providersRoter.get(
   }),
   providerDayAvailabilityController.index,
 );
+providersRouter.get(
+  '/:provider_id/month-availability',
+  celebrate({
+    [Segments.PARAMS]: {
+      provider_id: Joi.string().uuid().required(),
+    },
+  }),
+  providerMonthAvailabilityController.index,
+);
 
-export default providersRoter;
+export default providersRouter;
