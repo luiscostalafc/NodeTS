@@ -34,7 +34,7 @@ class User {
   updated_at: Date;
 
   @Expose({ name: 'avatar_url' })
-  geAvatar_url(): string | null {
+  geAvatarUrl(): string | null {
     if (!this.avatar) {
       return null;
     }
